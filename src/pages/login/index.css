@@ -1,0 +1,23 @@
+.cont {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 600px;
+  margin-bottom: 60px;
+
+}
+
+.login-form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+
+
+.login-form-button {
+  width: 100%;
+}
