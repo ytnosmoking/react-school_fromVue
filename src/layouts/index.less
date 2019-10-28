@@ -1,0 +1,75 @@
+@import '../assets/less/func.less';
+
+.normal {
+  font-family: Georgia, sans-serif;
+  text-align: center;
+}
+
+
+.layout {
+  height: 100%;
+  min-width: 1200px;
+}
+
+.sider {
+  overflow: auto;
+  height: 100vh;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0px 1px 5px #888888;
+}
+
+.header_collapsed {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  justify-content: center;
+
+}
+
+.logo {
+  .calH(40px);
+  margin-right: 10px;
+}
+
+.content {
+  padding: 40px 20px;
+  position: relative;
+
+  .bread {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
+
+  .crop {
+    position: absolute;
+    height: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+
+  }
+}

@@ -1,7 +1,7 @@
 
 import { getItem, setItem, removeItem, postData, getData } from '@/utils/tools'
 import { API } from '@/utils/API'
-import router from 'umi/router'
+// import router from 'umi/router'
 
 const userInfo = getItem('userInfo') || {
   token: "",
@@ -31,8 +31,6 @@ export default {
             const useInfo = { role: roles, name, code: teacher_no, major, token }
             setItem('userInfo', useInfo)
             yield put({ type: 'initInfo', payload: { role: roles, name, code: teacher_no, major, token } })
-
-            // router.push('/home')
           }
         }
       } catch (error) { }

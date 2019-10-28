@@ -1,0 +1,1 @@
+export const PROJECTNAME = '武汉理工大学'
