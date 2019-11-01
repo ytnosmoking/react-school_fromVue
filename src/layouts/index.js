@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Layout, Button, Icon, Dropdown, Menu, } from 'antd'
+import { Layout, Button, Icon, Dropdown, Menu, Breadcrumb, ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN';
 import { connect } from 'dva'
 import Link from 'umi/link'
 import Redirect from 'umi/redirect'
+
 import LoginView from '../pages/login'
 import SiderMenu from '../components/siderMenu'
 import styles from './index.less';
@@ -23,7 +25,10 @@ const logo = require('../assets/logo.png')
 })
 class BasicLayout extends Component {
   render() {
-    const { user: { token, role, name }, collapsed, toggleCollapsed, children, location: { pathname } } = this.props
+    const { user: { token, role, name }, collapsed, toggleCollapsed, children, location: { pathname, state } } = this.props
+    console.log(state)
+    const { title: sTitle, fTitle } = state || { title: '', fTitle: '' }
+
     const userMenu = (
       <Menu>
         <Menu.Item key="1">
@@ -38,6 +43,9 @@ class BasicLayout extends Component {
         </Menu.Item>
       </Menu >
     )
+
+
+
     const isLogin = (
       <Layout className={styles.layout}>
         <Sider trigger={null} collapsible collapsed={collapsed} className={styles.sider}>
@@ -66,7 +74,12 @@ class BasicLayout extends Component {
             </div>
           </Header>
           <Content className={styles.content}>
-            <div className={styles.bread}> this is bread</div>
+            <div className={styles.bread}>
+              <Breadcrumb>
+                <Breadcrumb.Item>{fTitle}</Breadcrumb.Item>
+                <Breadcrumb.Item>{sTitle}</Breadcrumb.Item>
+              </Breadcrumb>
+            </div>
             {children}
             <div className={styles.crop}> copyright &copy; 武汉好快科技有限公司技术支持</div>
           </Content>
@@ -76,13 +89,15 @@ class BasicLayout extends Component {
 
     const innerCont = token ?
       isLogin : noLogin;
-    console.log(this.props)
+
 
     return (
-      <React.Fragment>
+      // <React.Fragment>
+      //   {innerCont}
+      // </React.Fragment>
+      <ConfigProvider locale={zhCN}>
         {innerCont}
-      </React.Fragment>
-
+      </ConfigProvider>
     );
   }
 }

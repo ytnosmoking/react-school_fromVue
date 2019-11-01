@@ -21,9 +21,6 @@ class NormalLoginForm extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    // const { , location: { pathname } } = this.props
-
-    // const redirectPath = pathname !== '/login' ? pathname : '/home'
     return (
       <div >
         <img src={"/imgs/school.png"} alt="" className={styles.logo} />

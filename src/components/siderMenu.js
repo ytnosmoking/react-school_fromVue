@@ -53,7 +53,7 @@ class SiderMenu extends Component {
                   let routes = null
                   if (route.component) {
                     routes = <Menu.Item key={route.path}>
-                      <Link to={{ pathname: route.path, state: { title: route.meta.title } }}>
+                      <Link to={{ pathname: route.path, state: { title: route.meta.title, fTitle: item.meta.title } }}>
                         {route.meta.title}
                       </Link>
                     </Menu.Item>
