@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line
 import { postData, getData } from '@/utils/tools'
 import { API } from '@/utils/API'
 
@@ -16,19 +17,66 @@ export default {
         current: 1,
         total: 1
       }
-    }
+    },
+    tableLoading: true
   },
   effects: {
     *getTotalRequire({ payload }, { call, put }) {
+      yield put({
+        type: 'syncTableLoading', payload: {
+          loading: true
+        }
+      })
       try {
-        const res = yield call(getTotalRequire, payload)
-        console.log(res)
+        const { errcode, data: { data, current_page, total, per_page } } = yield call(getTotalRequire, payload)
+        if (errcode === 0) {
+          yield put({
+            type: 'syncRequireInfo', payload: {
+              data,
+              page: {
+                size: per_page,
+                current: current_page,
+                total
+              }
+            }
+          })
+          yield put({
+            type: 'syncTableLoading', payload: {
+              loading: false
+            }
+          })
+        }
       } catch (err) {
         console.log(err)
+        yield put({
+          type: 'syncTableLoading', payload: {
+            loading: false
+          }
+        })
       }
     }
   },
   reducers: {
-
+    syncRequireInfo(state, action) {
+      const { payload: { data, page } } = action
+      return {
+        ...state,
+        requireInfo: {
+          data: data.map(item => ({
+            ...item,
+            year: item.enter_year,
+            major: item.major.title
+          })),
+          page
+        }
+      }
+    },
+    syncTableLoading(state, action) {
+      const { payload: { loading } } = action
+      return {
+        ...state,
+        tableLoading: loading
+      }
+    }
   }
 }

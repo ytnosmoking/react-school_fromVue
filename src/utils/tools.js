@@ -101,6 +101,17 @@ export const getDownLoadFile = (url, params, method = 'get') => {
   })
 }
 
+export const pt = (value) => ({ paddingTop: value })
+export const mt = (value) => ({ marginTop: value })
+export const ml = (value) => ({ marginLeft: value })
+export const setWidth = (value) => ({ width: value })
+export const setDisplay = (value) => ({ display: value })
+export const pt10 = {
+  paddingTop: 10
+}
+export const ml20 = {
+  marginLeft: 20
+}
 
 
 export const getItem = key => JSON.parse(localStorage.getItem(key)) || ''

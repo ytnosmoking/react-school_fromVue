@@ -2,6 +2,12 @@
 
 // import { totalRoutes, courseRoutes, finishRoutes, dictionaryRoutes,manage } from './routes'
 import { navRoutes } from './routes'
+import path from 'path'
+// console.log(path)
+// console.log(__dirname)
+const resolve = (src) => {
+  return path.resolve(__dirname, '..', src)
+}
 export default {
   plugins: [
     ['umi-plugin-react', {
@@ -45,5 +51,10 @@ export default {
       ]
     },
   ],
+  // webpack
+  chainWebpack(config, { webpack }) {
+    config.resolve.alias.set('@', resolve('src'))
+    config.resolve.alias.set('utils', resolve('src/utils'))
+  },
 
 }

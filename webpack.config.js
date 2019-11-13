@@ -10,11 +10,11 @@ module.exports = {
     config.resolve.alias.set('@', path.resolve(__dirname, 'src'))
     config.resolve.alias.set('utils', path.resolve(__dirname, 'src/utils'))
   },
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
-  }
+  // devServer: {
+  //   contentBase: path.join(__dirname, 'dist'),
+  //   compress: true,
+  //   port: 9000
+  // },
   // resolve: {
   //   alias: {
   //     '@': path.resolve(__dirname, 'src'),
