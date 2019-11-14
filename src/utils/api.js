@@ -1,4 +1,5 @@
 export const API = {
+  // login
   EditorPwd: '/teacher/change-password', // 修改密码
   Login: '/teacher/login',
   userInfo: '/teacher/info',

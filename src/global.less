@@ -14,7 +14,53 @@ body {
 }
 
 .calH(@h: auto) {
-  height: @h
+  height: @h;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
 }
 
 // @orange: orange;
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.star {
+  // transform: scale(1.25);
+  transform: translateY(200%);
+}
+
+.star-enter {
+  opacity: 0;
+  transform: translateY(200%);
+}
+
+.star-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 300ms ease-out;
+  // transition: all 1s linear;
+}
+
+.star-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.star-exit-active {
+  opacity: 0;
+  transform: translateY(200%);
+  transition: all 300ms ease-in;
+  // transition: all 1s linear;
+}

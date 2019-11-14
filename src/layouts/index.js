@@ -4,6 +4,7 @@ import zhCN from 'antd/es/locale/zh_CN';
 import { connect } from 'dva'
 import Link from 'umi/link'
 import Redirect from 'umi/redirect'
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import LoginView from '../pages/login'
 import SiderMenu from '../components/siderMenu'
@@ -26,8 +27,8 @@ const logo = require('../assets/logo.png')
 class BasicLayout extends Component {
   render() {
     const { user: { token, role, name }, collapsed, toggleCollapsed, children, location: { pathname, state } } = this.props
-    console.log(state)
-    const { title: sTitle, fTitle } = state || { title: '', fTitle: '' }
+    // console.log(state)
+    const { title: sTitle, fTitle, ssTitle } = state || { title: '', fTitle: '', ssTitle: '' }
 
     const userMenu = (
       <Menu>
@@ -78,8 +79,14 @@ class BasicLayout extends Component {
               <Breadcrumb>
                 <Breadcrumb.Item>{fTitle}</Breadcrumb.Item>
                 <Breadcrumb.Item>{sTitle}</Breadcrumb.Item>
+                <Breadcrumb.Item>{ssTitle}</Breadcrumb.Item>
               </Breadcrumb>
             </div>
+            {/* <TransitionGroup>
+              <CSSTransition classNames="star" timeout={300}>
+                {children}
+              </CSSTransition>
+            </TransitionGroup> */}
             {children}
             <div className={styles.crop}> copyright &copy; 武汉好快科技有限公司技术支持</div>
           </Content>

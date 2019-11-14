@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import {Select} from 'antd'
+import { Select } from 'antd'
 
 import { connect } from 'dva'
-import {ml20} from '@/utils/tools'
+import { ml20 } from '@/utils/tools'
 @connect(state => ({
   majors: state.common.majors.lists
 }), {
@@ -14,9 +14,10 @@ class MajorSelect extends Component {
     this.props.getMoreMajor()
   }
   render() {
-    const { 
+    const {
       getMoreMajor,
-      changeMajor, selectMajor,majors: majorArr} = this.props
+      changeMajor, selectMajor, majors: majorArr } = this.props
+    // console.log(majorArr)
     return (
       <React.Fragment>
         <Select placeholder="专业" style={{ width: 140, ...ml20 }} value={selectMajor || '专业'} onChange={changeMajor}

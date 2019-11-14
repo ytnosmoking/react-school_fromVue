@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import styles from './require.css';
 import CommonTitle from '@/components/commonTitle'
 import MajorSelect from '@/components/MajorSelect'
@@ -10,9 +10,8 @@ import { allColumns } from 'utils/table'
 // import CommonSearch from '@/components/CommonSearch'
 import { connect } from 'dva'
 import { Tooltip, Icon } from 'antd'
-const pt10 = {
-  paddingTop: 10
-}
+import { pt } from 'utils/tools'
+
 
 @connect(state => ({
   lists: state.total.requireInfo.data,
@@ -70,7 +69,7 @@ class TotalRequire extends React.Component {
   }
   changeMajor = (selectMajor) => {
     console.log(selectMajor)
-    const major = selectMajor==='专业'?'':major
+    const major = selectMajor === '专业' ? '' : selectMajor
     this.setState({
       selectMajor: major
     })
@@ -79,6 +78,11 @@ class TotalRequire extends React.Component {
     console.log(current, page)
     const params = this.getParams()
     params.page_size = page
+    this.props.getLists(params)
+  }
+  changePage = (current) => {
+    const params = this.getParams()
+    params.page = current
     this.props.getLists(params)
   }
   componentDidMount() {
@@ -110,7 +114,7 @@ class TotalRequire extends React.Component {
       <React.Fragment>
         {/*  <div> */}
         <CommonTitle title={title} />
-        <div style={pt10}>
+        <div style={pt(10)}>
           <YearPicker
             changeDate={this.changeDate}
             year={year} />
@@ -121,7 +125,7 @@ class TotalRequire extends React.Component {
           <CtrlButton func={this.resetSearch} txt='重置' />
         </div>
         <CommonTable columns={allColumns.require} loading={loading} dataSource={dataSource} styles={{ height: 'calc(100% - 30px - 50px - 80px)' }} />
-        <CommonPage current={current} size={size} total={total} changePageSize={this.changePageSize} />
+        <CommonPage current={current} size={size} total={total} changePageSize={this.changePageSize} changePage={this.changePage} />
         {/* </div> */}
       </React.Fragment>
     )

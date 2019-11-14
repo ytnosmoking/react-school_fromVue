@@ -21,7 +21,16 @@ export const totalRoutes = {
       meta: {
         title: '学生毕业要求达成度'
       },
-      component: './total/graduate'
+      component: './total/graduate',
+      routes: [
+        {
+          path: ':id',
+          meta: {
+            title: '学生达成度详情'
+          },
+          component: './total/graduateStudent',
+        }
+      ]
     },
     {
       path: '/total/support',

@@ -41,7 +41,7 @@ export default {
           total,
           per_page
         } } = yield call(getMoreMajor, { page: (config.page && config.page.page || 0) + 1, page_size: 10 })
-        console.log(data)
+        // console.log(data)
         if (errcode === 0) {
           yield put({
             type: 'syncMajor', payload: {

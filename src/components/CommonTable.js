@@ -34,13 +34,13 @@ class CommonTable extends Component {
   resizeTable = () => {
     const dom = document.getElementsByClassName('selfTable')[0]
     const computedHeight = window.getComputedStyle(dom).height
-    console.log(computedHeight)
+    // console.log(computedHeight)
     const scroll = calScroll(computedHeight, this.props.columns)
     this.setState({
       scroll
     }, () => {
-      console.log(1111)
-      console.log(this.state.scroll)
+      // console.log(1111)
+      // console.log(this.state.scroll)
     })
   }
 
