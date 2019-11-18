@@ -23,7 +23,7 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div >
-        <img src={"/imgs/school.png"} alt="" className={styles.logo} />
+        <img src={"./imgs/school.png"} alt="" className={styles.logo} />
         <Form onSubmit={this.handleSubmit} className={styles['login-form']}>
 
           <Form.Item>
