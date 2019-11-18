@@ -56,5 +56,6 @@ export default {
     config.resolve.alias.set('@', resolve('src'))
     config.resolve.alias.set('utils', resolve('src/utils'))
   },
+  publicPath: './'
 
 }

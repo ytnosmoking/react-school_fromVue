@@ -262,7 +262,8 @@ const isDev = process.env.NODE_ENV === 'development'
 const devUrl = 'http://dcd.hooook.com/api' // 测试
 // const devUrl = '/develop'
 // const devUrl = 'http://dcd.test/api' // 测试
-const proUrl = ''
+// const proUrl = ''
+const proUrl = 'http://dcd.hooook.com/api'
 export const baseUrl = isDev ? devUrl : proUrl || devUrl
 
 export const allRole = ['admin', 'teacher', 'group_master', 'professor', 'major_master', 'department_master']
